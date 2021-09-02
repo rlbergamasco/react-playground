@@ -20,7 +20,7 @@ const styles = (theme) => ({
     }
 });
 
-export const ApproveButton = withStyles(styles)(({id, handleRefresh, disabled, classes}) => {
+export const ApproveButton = withStyles(styles)(({id, special, handleRefresh, disabled, classes}) => {
     const [open, setOpen] = useState(false);
 
     const handleClickOpen = () => {
@@ -36,7 +36,7 @@ export const ApproveButton = withStyles(styles)(({id, handleRefresh, disabled, c
             <IconButton disableRipple disabled={disabled} className={classes.disableHover} onClick={handleClickOpen}>
                 <CheckCircle className={classes.button} />
             </IconButton>
-            <ConfirmDialog open={open} onClose={handleClose} id={id} handleRefresh={handleRefresh} />
+            <ConfirmDialog open={open} special={special} onClose={handleClose} id={id} handleRefresh={handleRefresh} />
         </React.Fragment>
     )
 });

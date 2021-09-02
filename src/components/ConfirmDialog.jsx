@@ -1,4 +1,6 @@
 import { Dialog, Button, DialogTitle, Box, withStyles } from '@material-ui/core';
+import { changeDotStatus } from 'appSlice';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 
 const styles = (theme) => ({
@@ -11,13 +13,17 @@ const styles = (theme) => ({
   }
 });
 
-export const ConfirmDialog = withStyles(styles)(({ onClose, open, id, handleRefresh, classes }) => {
+export const ConfirmDialog = withStyles(styles)(({ onClose, special, open, classes }) => {
+  const dispatch = useDispatch();
+
   const handleClose = () => {
     onClose();
   };
 
   const handleApprove = () => {
-    console.log("approved")
+    if (special) {
+      dispatch(changeDotStatus(1))
+    }
     onClose();
   };
 

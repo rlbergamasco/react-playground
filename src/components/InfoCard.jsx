@@ -1,5 +1,5 @@
-import { Card, CardContent, Box, Typography, Grid, withStyles } from '@material-ui/core';
-import { ApproveButton, IgnoreButton, MyCheckbox, EmailTooltip } from 'components';
+import { Card, CardContent, Box, Typography, Grid, Checkbox, withStyles } from '@material-ui/core';
+import { ApproveButton, IgnoreButton } from 'components';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectSelectedItems, toggleItem } from 'appSlice';
 import PropTypes from 'prop-types';
@@ -21,7 +21,7 @@ export const InfoCard = ({ data, dataLabels, buttonLabels, dataPoints, disableCh
                 <Grid container direction="row" justify="center" alignItems="center">
                     {disableCheckboxes ? null :
                     <Grid item style={{width: "6%"}}>
-                        <MyCheckbox
+                        <Checkbox
                             checked={selectedItems.includes(data.id)}
                             onChange={() => dispatch(toggleItem(data.id))}
                         />
@@ -66,7 +66,7 @@ const DataRow = withStyles(styles)(({ data, dataPoints, dataWidth, buttonLabels,
             {buttonLabels.includes("YES") ? 
             <Grid item className={classes.buttonWidth}>
                 <Box display='flex' justifyContent="center">
-                    <ApproveButton id={data.id}/>
+                    <ApproveButton special={data.id === 4} id={data.id}/>
                 </Box>
             </Grid>
             : null
@@ -74,7 +74,7 @@ const DataRow = withStyles(styles)(({ data, dataPoints, dataWidth, buttonLabels,
             {buttonLabels.includes("NO") ? 
             <Grid item className={classes.buttonWidth}>
                 <Box display='flex' justifyContent="center">
-                    <IgnoreButton id={data.id}/>
+                    <IgnoreButton special={data.id === 2} id={data.id}/>
                 </Box>
             </Grid>
             : null

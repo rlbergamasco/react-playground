@@ -5,7 +5,8 @@ const initialState = {
     selectedItems: [],
     disableCheckboxes: true,
     numCards: 2,
-    numCols: 5,
+    numCols: 4,
+    dotStatus: [true, true, true, true, true, true, true],
 }
 
 export const appSlice = createSlice({
@@ -28,22 +29,33 @@ export const appSlice = createSlice({
         toggleDisableCheckboxes: (state) => {
             state.disableCheckboxes = !state.disableCheckboxes;
         },
+        changeNumCards: (state, action) => {
+            state.numCards = action.payload;
+        },
+        changeNumCols: (state, action) => {
+            state.numCols = action.payload;
+        },
+        changeDotStatus: (state, action) => {
+            state.dotStatus[action.payload] = false;
+        },
         resetState: (state) => {
             state.isDark = false;
             state.selectedItems = [];
             state.disableCheckboxes = true;
             state.numCards = 2;
-            state.numCols = 5;
+            state.numCols = 4;
+            state.dotStatus = [true, true, true, true, true, true, true];
         },
     },
 });
 
-export const { toggleIsDark, toggleItem, toggleDisableCheckboxes, resetState } = appSlice.actions;
+export const { toggleIsDark, toggleItem, toggleDisableCheckboxes, changeNumCards, changeNumCols, changeDotStatus, resetState } = appSlice.actions;
 
 export const selectIsDark = (state) => state.app.isDark;
 export const selectSelectedItems = (state) => state.app.selectedItems;
 export const selectDisableCheckboxes = (state) => state.app.disableCheckboxes;
 export const selectNumCards = (state) => state.app.numCards;
 export const selectNumCols = (state) => state.app.numCols;
+export const selectDotStatus = (state) => state.app.dotStatus;
 
 export default appSlice.reducer;

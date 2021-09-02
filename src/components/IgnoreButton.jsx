@@ -1,5 +1,7 @@
 import { IconButton, withStyles } from '@material-ui/core';
 import { RemoveCircle } from '@material-ui/icons';
+import { changeDotStatus } from 'appSlice';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 
 const styles = (theme) => ({
@@ -18,9 +20,13 @@ const styles = (theme) => ({
     }
 });
 
-export const IgnoreButton = withStyles(styles)(({id, disabled, classes}) => {
+export const IgnoreButton = withStyles(styles)(({id, special, disabled, classes}) => {
+    const dispatch = useDispatch();
+
     const handleClick = () => {
-        Array.isArray(id) ? console.log("bulk ignore") : console.log("single ignore");
+       if (special) {
+        dispatch(changeDotStatus(0))
+       }
     };
 
     return (
