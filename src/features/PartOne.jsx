@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { Box, Grid, Button, Typography, Checkbox } from '@material-ui/core';
-import { StarButton, InfoCard, Dropdown, Dot } from 'components';
+import React from 'react';
+import { Box, Grid, Checkbox } from '@material-ui/core';
+import { StarButton, InfoCard, Dropdown } from 'components';
 import {
   selectDisableCheckboxes, selectNumCards, selectNumCols, selectSelectedItems,
-  toggleDisableCheckboxes, resetState, changeNumCols, changeNumCards, selectDotStatus
+  toggleDisableCheckboxes, changeNumCols, changeNumCards, selectDotStatus
 } from 'appSlice';
 import { useSelector, useDispatch } from 'react-redux';
 

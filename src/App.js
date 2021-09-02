@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Button, Typography, Checkbox } from '@material-ui/core';
+import { Box, Button, Typography } from '@material-ui/core';
 import { Dot } from 'components';
 import { PartOne } from 'features';
 import { selectNumCards, resetState, selectDotStatus } from 'appSlice';
