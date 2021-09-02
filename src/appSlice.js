@@ -3,10 +3,11 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     isDark: false,
     selectedItems: [],
+    selectedDots: [],
     disableCheckboxes: true,
     numCards: 2,
     numCols: 4,
-    dotStatus: [true, true, true, true, true, true, true],
+    dotStatus: [true, true, true, true, true],
 }
 
 export const appSlice = createSlice({
@@ -24,6 +25,16 @@ export const appSlice = createSlice({
                 // Otherwise add the ID to the array
             } else {
                 state.selectedItems = [...state.selectedItems, actionItemId]
+            }
+        },
+        toggleDot: (state, action) => {
+            const actionDotIdx = action.payload;
+            // If selectedItems has the ID we're looking for then remove it from the array
+            if (state.selectedDots.includes(actionDotIdx)) {
+                state.selectedDots = state.selectedDots.filter(dotIdx => dotIdx !== actionDotIdx)
+                // Otherwise add the ID to the array
+            } else {
+                state.selectedDots = [...state.selectedDots, actionDotIdx]
             }
         },
         toggleDisableCheckboxes: (state) => {
@@ -49,10 +60,11 @@ export const appSlice = createSlice({
     },
 });
 
-export const { toggleIsDark, toggleItem, toggleDisableCheckboxes, changeNumCards, changeNumCols, changeDotStatus, resetState } = appSlice.actions;
+export const { toggleIsDark, toggleItem, toggleDot, toggleDisableCheckboxes, changeNumCards, changeNumCols, changeDotStatus, resetState } = appSlice.actions;
 
 export const selectIsDark = (state) => state.app.isDark;
 export const selectSelectedItems = (state) => state.app.selectedItems;
+export const selectSelectedDots = (state) => state.app.selectedDots;
 export const selectDisableCheckboxes = (state) => state.app.disableCheckboxes;
 export const selectNumCards = (state) => state.app.numCards;
 export const selectNumCols = (state) => state.app.numCols;

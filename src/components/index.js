@@ -6,3 +6,5 @@ export { ConfirmDialog } from "./ConfirmDialog";
 export { EmailTooltip } from "./EmailTooltip";
 export { Dropdown } from "./Dropdown";
 export { Dot } from "./Dot";
+export { DotButton } from "./DotButton";
+export { DotGrid } from "./DotGrid";

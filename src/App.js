@@ -28,6 +28,9 @@ function App() {
     dispatch(resetState());
   }
 
+  const partOneComplete = numCards === 0 && !dotStatus[0] && !dotStatus[1] && !dotStatus[2];
+  const partTwoComplete = !dotStatus[4];
+
   return (
     <ThemeProvider theme={theme}>
       <Box minHeight="100vh" bgcolor="background.default">
@@ -39,11 +42,14 @@ function App() {
               <Dot key={i} disabled={status} />
             ))}
           </Box>
-          {isStarted ? numCards === 0 && !dotStatus[0] && !dotStatus[1] && !dotStatus[2] ?
+          {isStarted ? partOneComplete ? partTwoComplete ?
+            <Typography variant="h4" align="center" color="textPrimary">Congrats! You colored all the dots!</Typography>
+            :
             <PartTwo />
             :
             <PartOne />
-            : null
+            :
+            null
           }
           <Box m={4} display="flex" justifyContent="center">
             <Button onClick={isStarted ? handleReset : handleStart} variant="outlined" size="large">{isStarted ? "Reset" : "Start"}</Button>
