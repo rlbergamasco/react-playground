@@ -29,7 +29,7 @@ export const StarButton = withStyles(styles)(({disabled, classes}) => {
 
     return (
         <IconButton disableRipple disabled={disabled} className={classes.disableHover} onClick={handleClick}>
-            <Stars className={classes.button} />
+            <Stars fontSize="large" className={classes.button} />
         </IconButton>
     )
 });

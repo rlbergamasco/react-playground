@@ -22,7 +22,7 @@ function App() {
   }
 
   return (
-    <Box m={2}>
+    <Box m={3}>
       <Typography variant="h2" align="center">Welcome to my React playground!</Typography>
       <Typography variant="h6" align="center">Click on different buttons to reveal more components, find hints, and light up all the dots.</Typography>
       <Box m={2} display="flex" justifyContent="center">
@@ -31,7 +31,7 @@ function App() {
         ))}
       </Box>
       {isStarted ? numCards === 0 && !dotStatus[0] && !dotStatus[1] && !dotStatus[2] ?
-        <Typography>Hello</Typography>
+        <Typography align="center">Part 2</Typography>
         :
         <PartOne />
         : null

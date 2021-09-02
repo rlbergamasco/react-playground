@@ -17,10 +17,10 @@ export const InfoCard = ({ data, dataLabels, buttonLabels, dataPoints, disableCh
 
     return (
         <Card variant="outlined" style={{ marginBottom: '20px' }}>
-            <CardContent style={{ padding: disableCheckboxes ? '16px 20px 16px 20px' : '16px 0 16px 0' }}>
+            <CardContent style={{ padding: disableCheckboxes ? '16px 20px 16px 20px' : '16px 20px 16px 0' }}>
                 <Grid container direction="row" justifyContent="center" alignItems="center">
                     {disableCheckboxes ? null :
-                    <Grid item style={{width: "10%"}}>
+                    <Grid item style={{width: "8%"}}>
                         <Box display="flex" justifyContent="center">
                             <Checkbox
                                 checked={selectedItems.includes(data.id)}
@@ -29,7 +29,7 @@ export const InfoCard = ({ data, dataLabels, buttonLabels, dataPoints, disableCh
                         </Box>
                     </Grid>
                     }
-                    <Grid item xs={disableCheckboxes ? 12 : "auto"} style={{width: disableCheckboxes ? "auto" : "90%"}}>
+                    <Grid item xs={disableCheckboxes ? 12 : "auto"} style={{width: disableCheckboxes ? "auto" : "92%"}}>
                         <LabelRow dataLabels={dataLabels} buttonLabels={buttonLabels} dataWidth={dataWidth}/>
                         <DataRow data={data} dataPoints={dataPoints} dataWidth={dataWidth}
                             buttonLabels={buttonLabels}/>

@@ -22,7 +22,7 @@ export const PartOne = () => {
         {
           "id": 0,
           "col1": "Placeholder 1",
-          "col2": "More cards",
+          "col2": "1. More cards",
           "col3": "Placeholder 3",
           "col4": "Placeholder 4",
           "col5": "Placeholder 5",
@@ -36,13 +36,13 @@ export const PartOne = () => {
           "col3": "Placeholder 3",
           "col4": "Placeholder 4",
           "col5": "Placeholder 5",
-          "col6": "Checkbox",
+          "col6": "5. Checkbox",
           "col7": "Placeholder 7",
         },
         {
           "id": 2,
           "col1": "Placeholder 1",
-          "col2": "Click No",
+          "col2": "2. Click No",
           "col3": "Placeholder 3",
           "col4": "Placeholder 4",
           "col5": "Placeholder 5",
@@ -51,10 +51,10 @@ export const PartOne = () => {
         },
         {
           "id": 3,
-          "col1": "Star Button",
+          "col1": "6. Star Button",
           "col2": "Placeholder 2",
           "col3": "Placeholder 3",
-          "col4": "More columns",
+          "col4": "4. More columns",
           "col5": "Placeholder 5",
           "col6": "Placeholder 6",
           "col7": "Placeholder 7",
@@ -64,7 +64,7 @@ export const PartOne = () => {
           "col1": "Placeholder 1",
           "col2": "Placeholder 2",
           "col3": "Placeholder 3",
-          "col4": "Click Yes",
+          "col4": "3. Click Yes",
           "col5": "Placeholder 5",
           "col6": "Placeholder 6",
           "col7": "Placeholder 7",
@@ -77,7 +77,7 @@ export const PartOne = () => {
           "col4": "Placeholder 4",
           "col5": "Placeholder 5",
           "col6": "Placeholder 6",
-          "col7": "Try zero cards",
+          "col7": "7. Try zero cards",
         }
     ].slice(0, numCards);
 
@@ -90,7 +90,7 @@ export const PartOne = () => {
     return (
         <React.Fragment>
           <Grid container alignItems="center">
-            <Grid item style={{width: "10%"}}>
+            <Grid item style={{width: "8%"}}>
                 <Box mb={2} display="flex" justifyContent="center" alignItems="center">
                 {enableCheckbox
                     ? !disableCheckboxes
