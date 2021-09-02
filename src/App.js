@@ -1,7 +1,10 @@
-import React from 'react';
-import { Box, Typography } from '@material-ui/core';
+import React, { useState } from 'react';
+import { Box, Button, Typography } from '@material-ui/core';
 import { ApproveButton, IgnoreButton, InfoCard, MyCheckbox } from 'components';
-import { selectDisableCheckboxes, selectNumCards, selectNumCols, selectSelectedItems, toggleDisableCheckboxes } from 'appSlice';
+import {
+  selectDisableCheckboxes, selectNumCards, selectNumCols, selectSelectedItems,
+  toggleDisableCheckboxes, resetState
+} from 'appSlice';
 import { useSelector, useDispatch } from 'react-redux';
 
 function App() {
@@ -78,21 +81,42 @@ function App() {
   const selectedItems = useSelector(selectSelectedItems);
   const dispatch = useDispatch();
 
+  const [isStarted, setIsStarted] = useState(false);
+
   const onChange = () => {
     dispatch(toggleDisableCheckboxes());
   }
+
+  const handleStart = () => {
+    setIsStarted(true);
+  }
+
+  const handleReset = () => {
+    setIsStarted(false);
+    dispatch(resetState());
+  }
+
   return (
     <Box m={2}>
       <Typography variant="h2" align="center">Welcome to my React playground!</Typography>
       <Typography variant="h6" align="center">Click on different buttons to reveal more components, find hints, and discover hidden messages.</Typography>
-      <Box mb={2} display="flex" justifyContent="flex-start" alignItems="center">
-        <MyCheckbox onChange={onChange} checked={!disableCheckboxes} />
-        <Typography>Enable Checkboxes</Typography>
-        {disableCheckboxes ? null : <React.Fragment><ApproveButton disabled={!selectedItems.length} /> <IgnoreButton disabled={!selectedItems.length} /> </React.Fragment>}
+      {isStarted ?
+        <React.Fragment>
+          <Box mb={2} display="flex" justifyContent="flex-start" alignItems="center">
+            <MyCheckbox onChange={onChange} checked={!disableCheckboxes} />
+            <Typography>Enable Checkboxes</Typography>
+            {disableCheckboxes ? null : <React.Fragment><ApproveButton disabled={!selectedItems.length} /> <IgnoreButton disabled={!selectedItems.length} /> </React.Fragment>}
+          </Box>
+          {dataArr.map((data, i) => (
+            <InfoCard key={i} data={data} dataLabels={dataLabels} buttonLabels={buttonLabels} dataPoints={dataPoints} disableCheckboxes={disableCheckboxes} />
+          ))}
+        </React.Fragment>
+        :
+        null
+      }
+      <Box m={4} display="flex" justifyContent="center">
+        <Button onClick={isStarted ? handleReset : handleStart} variant="outlined" size="large">{isStarted ? "Reset" : "Start"}</Button>
       </Box>
-      {dataArr.map((data, i) => (
-        <InfoCard key={i} data={data} dataLabels={dataLabels} buttonLabels={buttonLabels} dataPoints={dataPoints} disableCheckboxes={disableCheckboxes} />
-      ))}
     </Box>
   );
 }

@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     isDark: false,
-    selectedItems: ["1", "2"],
+    selectedItems: [],
     disableCheckboxes: true,
     numCards: 2,
     numCols: 5,
@@ -27,11 +27,18 @@ export const appSlice = createSlice({
         },
         toggleDisableCheckboxes: (state) => {
             state.disableCheckboxes = !state.disableCheckboxes;
-        }
+        },
+        resetState: (state) => {
+            state.isDark = false;
+            state.selectedItems = [];
+            state.disableCheckboxes = true;
+            state.numCards = 2;
+            state.numCols = 5;
+        },
     },
 });
 
-export const { toggleIsDark, toggleItem, toggleDisableCheckboxes } = appSlice.actions;
+export const { toggleIsDark, toggleItem, toggleDisableCheckboxes, resetState } = appSlice.actions;
 
 export const selectIsDark = (state) => state.app.isDark;
 export const selectSelectedItems = (state) => state.app.selectedItems;
