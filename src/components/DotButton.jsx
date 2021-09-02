@@ -26,7 +26,7 @@ export const DotButton = withStyles(styles)(({index, classes}) => {
     const [color, setColor] = useState("disabled")
 
     const handleClick = () => {
-        if (color == "disabled") { 
+        if (color === "disabled") { 
             setColor("secondary");
         } else {
             setColor("disabled");

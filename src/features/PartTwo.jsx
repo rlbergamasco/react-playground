@@ -1,13 +1,12 @@
 import React from 'react';
-import { Switch, Box, Grid } from '@material-ui/core';
+import { Switch, Box } from '@material-ui/core';
 import { DotGrid } from 'components';
-import { selectIsDark, toggleIsDark, changeDotStatus, selectDotStatus, selectSelectedDots } from 'appSlice';
+import { selectIsDark, toggleIsDark, changeDotStatus, selectSelectedDots } from 'appSlice';
 import { useSelector, useDispatch } from 'react-redux';
 
 export const PartTwo = () => {
     const dispatch = useDispatch();
     const isDark = useSelector(selectIsDark);
-    const dotStatus = useSelector(selectDotStatus);
     const selectedDots = useSelector(selectSelectedDots);
     const targetDots = [1, 5, 7, 9, 13, 17, 19, 21, 25];
     const disabled = !targetDots.every(v => selectedDots.includes(v));
