@@ -90,12 +90,14 @@ export const PartOne = () => {
     return (
         <React.Fragment>
           <Grid container alignItems="center">
-            <Grid item>
-              {enableCheckbox ? <Box mb={2} display="flex" justifyContent="flex-start" alignItems="center">
-                <Checkbox onChange={onChange} checked={!disableCheckboxes} />
-                {disableCheckboxes ? null : <StarButton disabled={!selectedItems.length} />}
-              </Box>
-                : null}
+            <Grid item style={{width: "10%"}}>
+                <Box mb={2} display="flex" justifyContent="center" alignItems="center">
+                {enableCheckbox
+                    ? !disableCheckboxes
+                    ? <StarButton disabled={!selectedItems.length} />
+                    : <Checkbox onChange={onChange} checked={!disableCheckboxes} />
+                    : null}
+                </Box>
             </Grid>
             <Grid item style={{ flexGrow: 1 }} />
             <Grid item>

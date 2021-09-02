@@ -20,14 +20,16 @@ export const InfoCard = ({ data, dataLabels, buttonLabels, dataPoints, disableCh
             <CardContent style={{ padding: disableCheckboxes ? '16px 20px 16px 20px' : '16px 0 16px 0' }}>
                 <Grid container direction="row" justifyContent="center" alignItems="center">
                     {disableCheckboxes ? null :
-                    <Grid item style={{width: "6%"}}>
-                        <Checkbox
-                            checked={selectedItems.includes(data.id)}
-                            onChange={() => dispatch(toggleItem(data.id))}
-                        />
+                    <Grid item style={{width: "10%"}}>
+                        <Box display="flex" justifyContent="center">
+                            <Checkbox
+                                checked={selectedItems.includes(data.id)}
+                                onChange={() => dispatch(toggleItem(data.id))}
+                            />
+                        </Box>
                     </Grid>
                     }
-                    <Grid item xs={disableCheckboxes ? 12 : "auto"} style={{width: disableCheckboxes ? "auto" : "94%"}}>
+                    <Grid item xs={disableCheckboxes ? 12 : "auto"} style={{width: disableCheckboxes ? "auto" : "90%"}}>
                         <LabelRow dataLabels={dataLabels} buttonLabels={buttonLabels} dataWidth={dataWidth}/>
                         <DataRow data={data} dataPoints={dataPoints} dataWidth={dataWidth}
                             buttonLabels={buttonLabels}/>
