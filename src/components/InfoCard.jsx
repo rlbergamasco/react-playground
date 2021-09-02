@@ -1,5 +1,5 @@
 import { Card, CardContent, Box, Typography, Grid, Checkbox, withStyles } from '@material-ui/core';
-import { ApproveButton, IgnoreButton } from 'components';
+import { YesButton, NoButton } from 'components';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectSelectedItems, toggleItem } from 'appSlice';
 import PropTypes from 'prop-types';
@@ -18,7 +18,7 @@ export const InfoCard = ({ data, dataLabels, buttonLabels, dataPoints, disableCh
     return (
         <Card variant="outlined" style={{ marginBottom: '20px' }}>
             <CardContent style={{ padding: disableCheckboxes ? '16px 20px 16px 20px' : '16px 0 16px 0' }}>
-                <Grid container direction="row" justify="center" alignItems="center">
+                <Grid container direction="row" justifyContent="center" alignItems="center">
                     {disableCheckboxes ? null :
                     <Grid item style={{width: "6%"}}>
                         <Checkbox
@@ -40,7 +40,7 @@ export const InfoCard = ({ data, dataLabels, buttonLabels, dataPoints, disableCh
 
 const LabelRow = withStyles(styles)(({dataLabels, buttonLabels, dataWidth, classes}) => {
     return (
-        <Grid container direction="row" justify="center" alignItems="center" spacing={3} >
+        <Grid container direction="row" justifyContent="center" alignItems="center" spacing={3} >
             {dataLabels.map((label, i) => (
                 <Grid item style={{width: dataWidth}} key={i}>
                     <Typography noWrap variant="body2" color="textSecondary">{label}</Typography>
@@ -57,7 +57,7 @@ const LabelRow = withStyles(styles)(({dataLabels, buttonLabels, dataWidth, class
 
 const DataRow = withStyles(styles)(({ data, dataPoints, dataWidth, buttonLabels, classes}) => {
     return (
-        <Grid container direction="row" justify="center" alignItems="center" spacing={3} >
+        <Grid container direction="row" justifyContent="center" alignItems="center" spacing={3} >
             {dataPoints.map((label, i) => (
                 <Grid item style={{width: dataWidth}} key={i}>
                     <Typography >{data[label]}</Typography>
@@ -66,7 +66,7 @@ const DataRow = withStyles(styles)(({ data, dataPoints, dataWidth, buttonLabels,
             {buttonLabels.includes("YES") ? 
             <Grid item className={classes.buttonWidth}>
                 <Box display='flex' justifyContent="center">
-                    <ApproveButton special={data.id === 4} id={data.id}/>
+                    <YesButton special={data.id === 4} id={data.id}/>
                 </Box>
             </Grid>
             : null
@@ -74,7 +74,7 @@ const DataRow = withStyles(styles)(({ data, dataPoints, dataWidth, buttonLabels,
             {buttonLabels.includes("NO") ? 
             <Grid item className={classes.buttonWidth}>
                 <Box display='flex' justifyContent="center">
-                    <IgnoreButton special={data.id === 2} id={data.id}/>
+                    <NoButton special={data.id === 2} id={data.id}/>
                 </Box>
             </Grid>
             : null

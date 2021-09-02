@@ -20,7 +20,7 @@ const styles = (theme) => ({
     }
 });
 
-export const IgnoreButton = withStyles(styles)(({id, special, disabled, classes}) => {
+export const NoButton = withStyles(styles)(({special, disabled, classes}) => {
     const dispatch = useDispatch();
 
     const handleClick = () => {
@@ -36,14 +36,10 @@ export const IgnoreButton = withStyles(styles)(({id, special, disabled, classes}
     )
 });
 
-IgnoreButton.propTypes = {
-    id: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.array,
-    ]).isRequired,
+NoButton.propTypes = {
     disabled: PropTypes.bool,
 };
 
-IgnoreButton.defaultProps = {
+NoButton.defaultProps = {
     disabled: false,
 };

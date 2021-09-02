@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Box, Grid, Button, Typography, Checkbox } from '@material-ui/core';
-import { ApproveButton, IgnoreButton, InfoCard, Dropdown, Dot } from 'components';
+import { StarButton, InfoCard, Dropdown, Dot } from 'components';
 import {
   selectDisableCheckboxes, selectNumCards, selectNumCols, selectSelectedItems,
   toggleDisableCheckboxes, resetState, changeNumCols, changeNumCards, selectDotStatus
@@ -16,7 +16,7 @@ function App() {
     {
       "id": 0,
       "col1": "Placeholder 1",
-      "col2": "More columns",
+      "col2": "More cards",
       "col3": "Placeholder 3",
       "col4": "Placeholder 4",
       "col5": "Placeholder 5",
@@ -30,7 +30,7 @@ function App() {
       "col3": "Placeholder 3",
       "col4": "Placeholder 4",
       "col5": "Placeholder 5",
-      "col6": "More cards",
+      "col6": "Checkbox",
       "col7": "Placeholder 7",
     },
     {
@@ -45,10 +45,10 @@ function App() {
     },
     {
       "id": 3,
-      "col1": "Placeholder 1",
+      "col1": "Star Button",
       "col2": "Placeholder 2",
       "col3": "Placeholder 3",
-      "col4": "Checkbox",
+      "col4": "More columns",
       "col5": "Placeholder 5",
       "col6": "Placeholder 6",
       "col7": "Placeholder 7",
@@ -110,13 +110,15 @@ function App() {
       </Box>
 
 
-      {isStarted ?
+      {isStarted ? numCards === 0 && !dotStatus[0] && !dotStatus[1] && !dotStatus[2] ?
+        <Typography>Hello</Typography>
+        :
         <React.Fragment>
           <Grid container alignItems="center">
             <Grid item>
               {enableCheckbox ? <Box mb={2} display="flex" justifyContent="flex-start" alignItems="center">
                 <Checkbox onChange={onChange} checked={!disableCheckboxes} />
-                {disableCheckboxes ? null : <React.Fragment><ApproveButton disabled={!selectedItems.length} /> <IgnoreButton disabled={!selectedItems.length} /> </React.Fragment>}
+                {disableCheckboxes ? null : <StarButton disabled={!selectedItems.length} />}
               </Box>
                 : null}
             </Grid>
@@ -132,8 +134,7 @@ function App() {
             <InfoCard key={i} data={data} dataLabels={dataLabels} buttonLabels={buttonLabels} dataPoints={dataPoints} disableCheckboxes={disableCheckboxes} />
           ))}
         </React.Fragment>
-        :
-        null
+        : null
       }
       <Box m={4} display="flex" justifyContent="center">
         <Button onClick={isStarted ? handleReset : handleStart} variant="outlined" size="large">{isStarted ? "Reset" : "Start"}</Button>

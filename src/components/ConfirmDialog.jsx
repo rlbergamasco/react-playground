@@ -43,9 +43,4 @@ export const ConfirmDialog = withStyles(styles)(({ onClose, special, open, class
 ConfirmDialog.propTypes = {
   onClose: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
-  id: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.array,
-  ]).isRequired,
-  handleRefresh: PropTypes.func.isRequired,
 };
